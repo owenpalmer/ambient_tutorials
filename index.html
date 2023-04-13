@@ -13,16 +13,20 @@
 </head>
 <body>
     <div class="tutorial">
-        <h2 id="section-10">Let's make a cube!</h2>
+        <h2 id="section-1" data-tab="1">Let's make a cube!</h2>
         <p>Here is a basic function that prints "Hello, world!".</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
 
-        <h2 id="section-2">Moving Objects</h2>
+        <h2 id="section-2" data-tab="2">Moving Objects</h2>
         <p>Now, let's modify the function to accept a parameter and print the passed argument.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
 
         <h2 id="section-3">Player Input</h2>
         <p>Finally, call the function with a custom message as an argument.</p>
-        <pre>
-            <code id="section-2" class="language-rust">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+<pre>
+<code id="section-2" class="language-rust">
 spawn_query(player()).bind(move |players| {
     for _ in players {
         Entity::new()
@@ -33,15 +37,26 @@ spawn_query(player()).bind(move |players| {
             .spawn();
     }
 })
-            </code>
-        </pre>
+</code>
+</pre>
 
         <h2 id="section-4">TEST</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
 
     </div>
+
     <div class="code-editor">
-        <pre><code id="editor" class="language-rust"></code></pre>
+        <div class="tab-buttons">
+            <div class="tab-button active" data-tab="1">server.rs</div>
+            <div class="tab-button" data-tab="2">client.rs</div>
+        </div>
+
+        <div class="tab-content visible" data-tab="1">
+            <pre><code id="editor1" class="language-rust"></code></pre>
+        </div>
+        <div class="tab-content" data-tab="2">
+            <pre><code id="editor2" class="language-rust"></code></pre>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>

@@ -64,7 +64,9 @@ const codeExamples = {
         OkEmpty
     }
     `,
-    'section-2': 'fn main() {\n    print_message("Hello, world!");\n}\n\nfn print_message(message: &str) {\n    println!("{}", message);\n}',
+    'section-2': `
+    fn main() {\n    print_message("Hello, world!");\n}\n\nfn print_message(message: &str) {\n    println!("{}", message);\n}
+    `,
     'section-3': 'fn main() {\n    print_message("Welcome to the tutorial!");\n}\n\nfn print_message(message: &str) {\n    println!("{}", message);\n}',
     'section-4': `spawn_query(player()).bind(move |players| {
         for _ in players {
@@ -78,8 +80,16 @@ const codeExamples = {
     });`,
 };
 
-const updateCode = (sectionId) => {
+// const updateCode = (sectionId, tabId) => {
+//     if (codeExamples[sectionId]) {
+//         codeElement.textContent = codeExamples[sectionId];
+//         hljs.highlightElement(codeElement);
+//     }
+// };
+
+const updateCode = (sectionId, tabId) => {
     if (codeExamples[sectionId]) {
+        const codeElement = document.querySelector(`#editor${tabId}`);
         codeElement.textContent = codeExamples[sectionId];
         hljs.highlightElement(codeElement);
     }
@@ -102,10 +112,17 @@ const findVisibleSection = () => {
     return visibleSection;
 };
 
+// const onScroll = () => {
+//     const visibleSection = findVisibleSection();
+//     if (visibleSection) {
+//         updateCode(visibleSection.id);
+//     }
+// };
 const onScroll = () => {
     const visibleSection = findVisibleSection();
     if (visibleSection) {
-        updateCode(visibleSection.id);
+        updateCode(visibleSection.id, visibleSection.dataset.tab);
+        switchTab(visibleSection.dataset.tab);
     }
 };
 
@@ -116,6 +133,33 @@ document.querySelectorAll('pre code').forEach((el) => {
 document.querySelector('.tutorial').addEventListener('scroll', onScroll);
 
 // Initialize the code editor with the first section
-updateCode('section-1');
+updateCode('section-1', '1');
+
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabContents = document.querySelectorAll('.tab-content');
+
+const switchTab = (targetTab) => {
+    tabButtons.forEach((button) => {
+        if (button.dataset.tab === targetTab) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+
+    tabContents.forEach((content) => {
+        if (content.dataset.tab === targetTab) {
+            content.classList.add('visible');
+        } else {
+            content.classList.remove('visible');
+        }
+    });
+};
+
+tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        switchTab(button.dataset.tab);
+    });
+});
 
 });
