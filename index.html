@@ -13,30 +13,61 @@
 </head>
 <body>
     <div class="tutorial">
-        <h2 id="section-1" data-tab="1">Let's make a cube!</h2>
-        <p>Here is a basic function that prints "Hello, world!".</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        <h2 id="section-1" data-tab="1">Setup</h2>
 
-        <h2 id="section-2" data-tab="2">Moving Objects</h2>
-        <p>Now, let's modify the function to accept a parameter and print the passed argument.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-
-        <h2 id="section-3">Player Input</h2>
-        <p>Finally, call the function with a custom message as an argument.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+        <p>First, run this command in your terminal</p>
+        <pre><code>ambient new my-project</code></pre>
+        <p>
+        This will create a directory called my-project, which is where your new Ambient project lives.
+        </p>
+        <p>Now run:</p>
+        <pre><code>cd my-project</code></pre>
+        <p>and</p>
+        <pre><code>ambient run</code></pre>
+        <p>After the build finishes, you should see a window with a plane in the center of the screen.</p>
+        <img src="media/new.jpg">
 
 <pre>
-<code id="section-2" data-tab="1" class="language-rust">
-spawn_query(player()).bind(move |players| {
-    for _ in players {
-        Entity::new()
-            .with_merge(make_transformable())
-            .with_default(cube())
-            .with(translation(), rand::random())
-            .with(color(), rand::random())
-            .spawn();
-    }
-})
+<code id="new_server" data-tab="1" class="language-rust">use ambient_api::{
+    components::core::{
+        app::main_scene,
+        camera::aspect_ratio_from_window,
+        primitives::quad,
+        transform::{lookat_center, translation},
+    },
+    concepts::{make_perspective_infinite_reverse_camera, make_transformable},
+    prelude::*,
+};
+
+#[main]
+pub async fn main() -> ResultEmpty {
+    Entity::new()
+        .with_merge(make_perspective_infinite_reverse_camera())
+        .with(aspect_ratio_from_window(), EntityId::resources())
+        .with_default(main_scene())
+        .with(translation(), Vec3::ONE * 5.)
+        .with(lookat_center(), vec3(0., 0., 0.))
+        .spawn();
+
+    Entity::new()
+        .with_merge(make_transformable())
+        .with_default(quad())
+        .spawn();
+
+    println!("Hello, Ambient!");
+
+    OkEmpty
+}
+</code>
+</pre>
+
+<pre>
+<code id="new_client" data-tab="2" class="language-rust">use ambient_api::prelude::*;
+
+#[main]
+pub async fn main() -> ResultEmpty {
+    OkEmpty
+}
 </code>
 </pre>
 

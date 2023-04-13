@@ -21,7 +21,7 @@ h1, h2 {
     width: 50%;
     padding: 20px;
     overflow-y: auto;
-    height: 100%;
+    /* height: 100%; */
 }
 .code-editor {
     position: fixed;
@@ -79,4 +79,10 @@ h2 {
 ::-webkit-scrollbar-thumb {
     background: #c3ef3a;
     border-radius: 10px;
+}
+
+img {
+    width: 100%;
+    border: solid 1px #2d2d2d;
+    border-radius: 2px;
 }
