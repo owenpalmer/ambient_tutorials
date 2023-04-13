@@ -1,4 +1,4 @@
-section_2 = `
+new_client = `
 use ambient_api::prelude::*;
 
 #[main]

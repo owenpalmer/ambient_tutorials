@@ -4,8 +4,8 @@ const codeElement = document.getElementById('editor');
 const hljs = window.hljs;
 
 const codeExamples = {
-    'section-1': section_1,
-    'section-2': section_2,
+    'new_server': new_server,
+    'new_client': new_client,
 };
 
 const updateCode = (sectionId, tabId) => {
@@ -18,7 +18,7 @@ const updateCode = (sectionId, tabId) => {
 
 const findVisibleSection = () => {
     const halfScreenHeight = window.innerHeight * .25;
-    const updaters = document.querySelectorAll('code');
+    const updaters = document.querySelectorAll('code.updater');
     let visibleSection = null;
     let maxTop = -Infinity;
 
@@ -48,5 +48,6 @@ document.querySelectorAll('pre code').forEach((el) => {
 document.querySelector('.tutorial').addEventListener('scroll', onScroll);
 
 // Initialize the code editor with the first section
-updateCode('section-1', '1');
+updateCode('new_server', '1');
+updateCode('new_client', '2');
 });

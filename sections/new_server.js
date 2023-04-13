@@ -1,4 +1,4 @@
-section_1 = `
+new_server = `
 use ambient_api::{
     components::core::{
         app::main_scene,

@@ -13,7 +13,9 @@
 </head>
 <body>
     <div class="tutorial">
-        <h2 id="section-1" data-tab="1">Setup</h2>
+        <h2>Setup</h2>
+        <code id="new_server" class="updater" data-tab="1"></code>
+        <code id="new_client" class="updater" data-tab="2"></code>
 
         <p>First, run this command in your terminal</p>
         <pre><code>ambient new my-project</code></pre>
@@ -26,53 +28,37 @@
         <pre><code>ambient run</code></pre>
         <p>After the build finishes, you should see a window with a plane in the center of the screen.</p>
         <img src="media/new.jpg">
+        <p>Congrats! You've compiled your first Ambient project!</p>
+
+        <p>Now let's dig into the code and see what's happening under the hood.
+        In the src directory of your project are two files, server.rs and client.rs. Go ahead and open up server.rs in your favorite editor :)</p>
+        <p>Let's take a look at this portion of the code.</p>
 
 <pre>
-<code id="new_server" data-tab="1" class="language-rust">use ambient_api::{
-    components::core::{
-        app::main_scene,
-        camera::aspect_ratio_from_window,
-        primitives::quad,
-        transform::{lookat_center, translation},
-    },
-    concepts::{make_perspective_infinite_reverse_camera, make_transformable},
-    prelude::*,
-};
-
-#[main]
-pub async fn main() -> ResultEmpty {
-    Entity::new()
-        .with_merge(make_perspective_infinite_reverse_camera())
-        .with(aspect_ratio_from_window(), EntityId::resources())
-        .with_default(main_scene())
-        .with(translation(), Vec3::ONE * 5.)
-        .with(lookat_center(), vec3(0., 0., 0.))
-        .spawn();
-
-    Entity::new()
-        .with_merge(make_transformable())
-        .with_default(quad())
-        .spawn();
-
-    println!("Hello, Ambient!");
-
-    OkEmpty
-}
+<code class="language-rust">Entity::new()
+    .with_merge(make_transformable())
+    .with_default(quad())
+    .spawn();
 </code>
 </pre>
+    <p>The <code>Entity::new()</code> function creates a new empty entity.</p>
+    <p>
+        The <code>make_transformable()</code> function creates an entity that has 3 components: 
+        <img class="invert" src="media/transformable.svg">
+        <br>
 
-<pre>
-<code id="new_client" data-tab="2" class="language-rust">use ambient_api::prelude::*;
+        These components get merged into the empty entity using the <code>with_merge()</code> method. Later on, we will change the values of these components for player movement.
+    </p>
+    <p>
+        The <code>quad()</code> component gets attached to the entity using
+        the <code>with_default</code> method, which sets the quad to the default size, color, etc.
+    </p>
+    <!-- <img class="invert" src="media/new_entity.svg"> -->
 
-#[main]
-pub async fn main() -> ResultEmpty {
-    OkEmpty
-}
-</code>
-</pre>
 
-        <h2 id="section-4">TEST</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+
+
 
     </div>
 
@@ -92,8 +78,8 @@ pub async fn main() -> ResultEmpty {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/rust.min.js"></script>
-    <script src="sections/section_1.js"></script>
-    <script src="sections/section_2.js"></script>
+    <script src="sections/new_server.js"></script>
+    <script src="sections/new_client.js"></script>
     <script src="tabs.js"></script>
     <script src="app.js"></script>
 </body>
