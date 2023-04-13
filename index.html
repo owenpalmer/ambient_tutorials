@@ -32,6 +32,8 @@
 
         <p>Now let's dig into the code and see what's happening under the hood.
         In the src directory of your project are two files, server.rs and client.rs. Go ahead and open up server.rs in your favorite editor :)</p>
+        <br>
+        <h2>Understanding Entities</h2>
         <p>Let's take a look at this portion of the code.</p>
 
 <pre>
@@ -41,6 +43,7 @@
     .spawn();
 </code>
 </pre>
+
     <p>The <code>Entity::new()</code> function creates a new empty entity.</p>
     <p>
         The <code>make_transformable()</code> function creates an entity that has 3 components: 
@@ -53,8 +56,38 @@
         The <code>quad()</code> component gets attached to the entity using
         the <code>with_default</code> method, which sets the quad to the default size, color, etc.
     </p>
-    <!-- <img class="invert" src="media/new_entity.svg"> -->
-
+    <p>
+        Let's make it a cube! First, let's import the cube component!
+    </p>
+<pre>
+<code class="language-rust">use ambient_api::{
+    components::core::{
+        app::main_scene,
+        camera::aspect_ratio_from_window,
+        primitives::{quad, cube}, // import the cube as well!
+        transform::{lookat_center, translation},
+    },
+    concepts::{make_perspective_infinite_reverse_camera, make_transformable},
+    prelude::*,
+};
+</code>
+</pre>
+    <p>
+        Next, instead of attaching the quad component, attach cube component!
+    </p>
+<pre>
+<code id="cube_instead" data-tab="1" class="language-rust updater">Entity::new()
+    .with_merge(make_transformable())
+    .with_default(cube()) // attach the cube instead :)
+    .spawn();
+</code>
+</pre>
+    <p>Once again, execute the command:</p>
+    <pre><code>ambient run</code></pre>
+    <img src="media/cube.jpg">
+    <p>Great! Let's do something a little more interesting and make this cube spin!</p>
+    <br>
+    <h2>Working with Components</h2>
 
 
 
@@ -80,6 +113,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/rust.min.js"></script>
     <script src="sections/new_server.js"></script>
     <script src="sections/new_client.js"></script>
+    <script src="sections/cube_instead.js"></script>
     <script src="tabs.js"></script>
     <script src="app.js"></script>
 </body>
