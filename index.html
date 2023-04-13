@@ -88,8 +88,32 @@
     <p>Great! Let's do something a little more interesting and make this cube spin!</p>
     <br>
     <h2>Working with Components</h2>
-
-
+    <p>First, let's assign our entity to a variable, and let's call it cube_id. The <code>spanw()</code> method
+        returns an EntityId, which is how we access an entity's components.
+    </p>
+<pre>
+<code id="assign_cube_to_variable" data-tab="1" class="language-rust updater">let cube_id = Entity::new()
+    .with_merge(make_transformable())
+    .with_default(cube())
+    .spawn();
+</code>
+</pre>
+    <p>Now, add this snippet after cube_id initialized.</p>
+<pre>
+<code id="add_frame_event" data-tab="1" class="language-rust updater">ambient_api::messages::Frame::subscribe(move |_| {
+    entity::set_component(
+        cube_id,
+        rotation(),
+        Quat::from_rotation_z(time()),
+    );
+});
+</code>
+</pre>
+    <p>Since this snippet uses the rotation() component, we must also import that function. If your IDE has auto-import, go ahead and use it :)</p>
+<pre><code class="language-rust">transform::{lookat_center, translation, rotation}, // import rotation as well!</code></pre>
+    <p>Recompile and your cube should be spinning!</p>
+    <img src="media/spin.gif">
+    <p>...</p>
 
 
 

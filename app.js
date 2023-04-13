@@ -7,10 +7,11 @@ const codeExamples = {
     'new_server': new_server,
     'new_client': new_client,
     'cube_instead': cube_instead,
+    'assign_cube_to_variable': assign_cube_to_variable,
+    'add_frame_event': add_frame_event,
 };
 
 const updateCode = (sectionId, tabId) => {
-    console.log(tabId);
     if (codeExamples[sectionId]) {
         const codeElement = document.querySelector(`#editor${tabId}`);
         codeElement.textContent = codeExamples[sectionId];
@@ -19,9 +20,8 @@ const updateCode = (sectionId, tabId) => {
 };
 
 const findVisibleSection = () => {
-    const halfScreenHeight = window.innerHeight * .6;
+    const halfScreenHeight = window.innerHeight * .9;
     const updaters = document.querySelectorAll('code.updater');
-    console.log(updaters);
     let visibleSection = null;
     let maxTop = -Infinity;
 
