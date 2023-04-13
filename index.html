@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Coding Tutorial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github-dark.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            font-family: Inter, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-weight: 400;
+            background-color: #131519;
+        }
+        h1, h2 {
+            max-width: 60ch;
+            color: #efefef;
+            font-size: 36px;
+            letter-spacing: -1px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+        .tutorial {
+            width: 50%;
+            padding: 20px;
+            overflow-y: auto;
+            height: 100%;
+        }
+        .code-editor {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: #131519;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .tutorial p {
+            max-width: 60ch;
+            color: #a3a3a3;
+            line-height: 130%;font-family: Arial, sans-serif;
+        }
+        .code-editor pre {
+            height: 100%;
+            background: #0d1117;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        pre::-webkit-scrollbar {
+            /* background: red; */
+            width: 10px;
+        }
+        pre::-webkit-scrollbar-thumb {
+            background: #c3ef3a;
+            border-radius: 10px;
+        }
+        pre, code {
+            white-space: pre;
+            tab-size: 4;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="tutorial">
+        <h2 id="section-10">Let's make a cube!</h2>
+        <p>Here is a basic function that prints "Hello, world!".</p>
+
+        <h2 id="section-2">Moving Objects</h2>
+        <p>Now, let's modify the function to accept a parameter and print the passed argument.</p>
+
+        <h2 id="section-3">Player Input</h2>
+        <p>Finally, call the function with a custom message as an argument.</p>
+        <pre>
+            <code id="section-2" class="language-rust">
+spawn_query(player()).bind(move |players| {
+    for _ in players {
+        Entity::new()
+            .with_merge(make_transformable())
+            .with_default(cube())
+            .with(translation(), rand::random())
+            .with(color(), rand::random())
+            .spawn();
+    }
+})
+            </code>
+        </pre>
+
+        <h2 id="section-4">TEST</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+
+    </div>
+    <div class="code-editor">
+        <pre><code id="editor" class="language-rust"></code></pre>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/rust.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
