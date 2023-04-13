@@ -18,7 +18,7 @@ const updateCode = (sectionId, tabId) => {
 
 const findVisibleSection = () => {
     const halfScreenHeight = window.innerHeight * .25;
-    const updaters = document.querySelectorAll('h2');
+    const updaters = document.querySelectorAll('code');
     let visibleSection = null;
     let maxTop = -Infinity;
 

@@ -3,4 +3,4 @@ pub async fn main() -> ResultEmpty {
         }
     });
 }
-`;
+`.trim();
