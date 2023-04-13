@@ -9,69 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            display: flex;
-            justify-content: space-between;
-            font-family: Inter, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            font-weight: 400;
-            background-color: #131519;
-        }
-        h1, h2 {
-            max-width: 60ch;
-            color: #efefef;
-            font-size: 36px;
-            letter-spacing: -1px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-        }
-        .tutorial {
-            width: 50%;
-            padding: 20px;
-            overflow-y: auto;
-            height: 100%;
-        }
-        .code-editor {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: #131519;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        h2 {
-            margin-bottom: 20px;
-        }
-        .tutorial p {
-            max-width: 60ch;
-            color: #a3a3a3;
-            line-height: 130%;font-family: Arial, sans-serif;
-        }
-        .code-editor pre {
-            height: 100%;
-            background: #0d1117;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-        pre::-webkit-scrollbar {
-            /* background: red; */
-            width: 10px;
-        }
-        pre::-webkit-scrollbar-thumb {
-            background: #c3ef3a;
-            border-radius: 10px;
-        }
-        pre, code {
-            white-space: pre;
-            tab-size: 4;
-        }
-
-    </style>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
     <div class="tutorial">
