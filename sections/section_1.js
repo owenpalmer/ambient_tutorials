@@ -1,3 +1,4 @@
+section_1 = `
 pub async fn main() -> ResultEmpty {
     Entity::new()
         .with_merge(make_transformable())
@@ -14,3 +15,4 @@ pub async fn main() -> ResultEmpty {
         }
     });
 }
+`;

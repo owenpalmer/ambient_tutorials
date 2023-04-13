@@ -4,18 +4,8 @@ const codeElement = document.getElementById('editor');
 const hljs = window.hljs;
 
 const codeExamples = {
-    'section-1': `hello :)`,
-    'section-2': `
-    fn main() {\n    print_message("Hello, world!");\n}\n\nfn print_message(message: &str) {\n    println!("{}", message);\n}
-    `,
-    'section-3': 'fn main() {\n    print_message("Welcome to the tutorial!");\n}\n\nfn print_message(message: &str) {\n    println!("{}", message);\n}',
-    'section-4': `spawn_query(player()).bind(move |players| {
-        for _ in players {
-            Entity::new()
-                .with_merge(make_transformable())
-                .spawn();
-        }
-    });`,
+    'section-1': section_1,
+    'section-2': section_2,
 };
 
 const updateCode = (sectionId, tabId) => {
@@ -28,15 +18,15 @@ const updateCode = (sectionId, tabId) => {
 
 const findVisibleSection = () => {
     const halfScreenHeight = window.innerHeight * .25;
-    const headers = document.querySelectorAll('h2');
+    const updaters = document.querySelectorAll('h2');
     let visibleSection = null;
     let maxTop = -Infinity;
 
-    headers.forEach((header) => {
-        const rect = header.getBoundingClientRect();
+    updaters.forEach((updater) => {
+        const rect = updater.getBoundingClientRect();
         if (rect.top < halfScreenHeight && rect.top > maxTop) {
             maxTop = rect.top;
-            visibleSection = header;
+            visibleSection = updater;
         }
     });
 
