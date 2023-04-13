@@ -4,3 +4,5 @@ it features a sidebar that displays what code has been explained so far in the t
 oftentimes tutorials will just tell you what snippets go where, and the reader can either
 make a mistake or lose track of something. this format solves that problem by having the tutorial *explain*
 the code, and having the sidebar show a cohesive program.
+
+i hacked this together in one evening, so the current implemention only supposed to be a *visual* proof of concept
